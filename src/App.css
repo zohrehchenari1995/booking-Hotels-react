@@ -1,11 +1,11 @@
-
 .container-header {
   margin: 0 auto;
   max-width: 1100px;
   padding: 1rem;
+
 }
 
-/*----------------------------------------- Wrapper */
+/*----------------------------------------- WRAPPER */
 .header__detail {
   display: flex;
   flex-direction: column;
@@ -13,11 +13,13 @@
   background: white;
   padding: 1rem;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   animation: fadeSlide 0.8s ease forwards;
+  overflow: visible;
+ 
 }
 
-/*---------------------------------- Bookmark & Login */
+/*----------------------------------BOOKMARK && LOGIN*/
 .detail__bookmark,
 .detail__login {
   background-color: var(--text-300);
@@ -31,10 +33,10 @@
 .detail__bookmark:hover,
 .detail__login:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
 }
 
-/*--------------------------------------- Destination */
+/*---------------------------------------DESTINATION*/
 .detail__destination {
   display: flex;
   align-items: center;
@@ -46,7 +48,7 @@
 }
 
 .detail__destination:focus-within {
-  box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
   background: #fff;
 }
 
@@ -63,48 +65,123 @@
   font-size: 0.95rem;
 }
 
-/*------------------------------------------ Calendar */
+/*------------------------------------------ CALENDER */
 .detail__calender {
+  display: flex;
   background: #f8f9fa;
   padding: 0.6rem 1rem;
   border-radius: 12px;
   transition: all 0.3s ease;
 }
+.calender__icon {
+  color: var(--primary-700);
+  font-size: 1.4rem;
+}
+.dateDropDown {
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+}
 
-/*------------------------------------------- Options */
+/*------------------------------------------- OPTIONS */
 .detail__options {
   background: #f8f9fa;
   padding: 0.6rem 1rem;
   border-radius: 12px;
   font-size: 0.9rem;
-  text-align: center;
   transition: all 0.3s ease;
+  text-align: center;
+  min-width: 0; 
+  position: relative;
+  /* transition: all 0.8s ease; */
+  /* animation: fadeslide 0.8s ease forwards */
+
+}
+
+#dropDown{
+  width: 100%;
+  min-width: 0;
+  transition: all 0.3s ease;
+
+}
+#dropDown span{
+  width: 100%;
+  display: block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+/* dropdown option... */
+.dropDown__options{
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 0.8rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.07);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  max-height: 220px;
+  overflow-y: auto;
+  cursor: pointer;
+}
 
-/*-------------------------------------------- Search */
+
+
+.options__adult,
+.options__children,
+.options__room{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.options__icon{
+  background-color: var(--text-400) ;
+  padding: 0.2rem;
+  border-radius: 2px;
+  color: white;
+  font-size: 1.1rem;
+}
+.options__title{
+  font-weight: bold;
+  color: var(--text-700);
+}
+.options__number{
+  color: var(--text-700);
+  font-weight: bold;
+}
+.options__controlls{
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+} 
+
+/*--------------------------------------------SEARCH */
 .detail__serarch {
   background: linear-gradient(135deg, var(--primary-700), #6366f1);
-  color: white;
   padding: 0.7rem 1rem;
   border-radius: 12px;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+
   transition: all 0.3s ease;
 }
-
 .detail__serarch:hover {
   transform: scale(1.05);
-  box-shadow: 0 10px 25px rgba(99,102,241,0.4);
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+}
+.search__icon {
+  color: white;
 }
 
-/*--------------------------------------- Media () */
-@media screen and (min-width:768px) {
-
+/*--------------------------------------- MEDIA */
+@media screen and (min-width: 768px) {
   .header__detail {
     flex-direction: row;
     align-items: center;
@@ -135,7 +212,7 @@
   }
 }
 
-/*--------------------------Animation */
+/*--------------------------ANIMATION */
 
 @keyframes fadeSlide {
   from {
