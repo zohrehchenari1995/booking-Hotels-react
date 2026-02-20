@@ -1,0 +1,149 @@
+
+.container-header {
+  margin: 0 auto;
+  max-width: 1100px;
+  padding: 1rem;
+}
+
+/*----------------------------------------- Wrapper */
+.header__detail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  background: white;
+  padding: 1rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  animation: fadeSlide 0.8s ease forwards;
+}
+
+/*---------------------------------- Bookmark & Login */
+.detail__bookmark,
+.detail__login {
+  background-color: var(--text-300);
+  padding: 0.7rem 1rem;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.detail__bookmark:hover,
+.detail__login:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+/*--------------------------------------- Destination */
+.detail__destination {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #f8f9fa;
+  padding: 0.6rem 0.8rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.detail__destination:focus-within {
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
+  background: #fff;
+}
+
+.destination__icon {
+  color: var(--rose-500);
+  font-size: 1.4rem;
+}
+
+.detail__destination input {
+  border: none;
+  outline: none;
+  background: transparent;
+  flex-grow: 1;
+  font-size: 0.95rem;
+}
+
+/*------------------------------------------ Calendar */
+.detail__calender {
+  background: #f8f9fa;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+/*------------------------------------------- Options */
+.detail__options {
+  background: #f8f9fa;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*-------------------------------------------- Search */
+.detail__serarch {
+  background: linear-gradient(135deg, var(--primary-700), #6366f1);
+  color: white;
+  padding: 0.7rem 1rem;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.detail__serarch:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(99,102,241,0.4);
+}
+
+/*--------------------------------------- Media () */
+@media screen and (min-width:768px) {
+
+  .header__detail {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .detail__bookmark,
+  .detail__login {
+    flex-shrink: 0;
+  }
+
+  .detail__destination {
+    flex: 2;
+  }
+
+  .detail__calender {
+    flex: 1;
+    text-align: center;
+  }
+
+  .detail__options {
+    flex: 1;
+  }
+
+  .detail__serarch {
+    flex-shrink: 0;
+    padding: 0.8rem 1.2rem;
+  }
+}
+
+/*--------------------------Animation */
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
