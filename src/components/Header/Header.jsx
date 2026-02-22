@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { HiCalendar, HiMinus, HiPlus, HiSearch } from "react-icons/hi";
 import { MdLocationOn } from "react-icons/md";
 
-
-
 function Header() {
   // STATE FOR DESTINATION...............................
   const [destination, setDestination] = useState("");
@@ -11,8 +9,20 @@ function Header() {
   const [openOptins, setOpenOptions] = useState(false);
   //STATE FOR UNDERESTAND TYPE OPTIONS...................
   const [options, setOptions] = useState({
-  
-  })
+    adult: 1,
+    children: 0,
+    room: 1,
+  });
+
+  // EVENTHANDLE FOR OPTIND MINUS $ PLUS FOR DETAILoPTIONS COMPONENT......
+  const handleOptions = (name, operation) => {
+    setOptions((prev) => {
+      return {
+        ...prev,
+        [name]: operation === "inc" ? prev[name] + 1 : prev[name] - 1,
+      };
+    });
+  };
 
   return (
     <div className="container-header">
@@ -45,10 +55,10 @@ function Header() {
         <div className="detail__options">
           {/* event onclick for open and close deropdown */}
           <div id="dropDown" onClick={() => setOpenOptions(!openOptins)}>
-            <span>1 adult &bull; 0 children &bull; 2 room </span>
+            <span>{options.adult} adult &bull; {options.children} children &bull; {options.room} room </span>
           </div>
           {/* dropdown options jsx and conditional rendering for show dropDown */}
-          {openOptins && <Dropdown />}
+          {openOptins && <Dropdown options={options}  handleOptions={handleOptions}/>}
         </div>
 
         {/* SEARCH ITEM.......................................... */}
@@ -68,32 +78,30 @@ function Header() {
 export default Header;
 
 // COMPONENTS FOR PART DROPDOWN (ADULT,CHILDREN,ROOM........)
-function Dropdown() {
+function Dropdown({ options, handleOptions }) {
   return (
     <div className="dropDown__options">
-      <DetailOptions/>
-      <DetailOptions/>
-      <DetailOptions/>
-
+      <DetailOptions type="adult" options={options} minLimit={1}    handleOptions={handleOptions}/>
+      <DetailOptions type="children" options={options} minLimit={0}    handleOptions={handleOptions}/>
+      <DetailOptions type="room" options={options} minLimit={1}    handleOptions={handleOptions}/>
     </div>
   );
 }
 
-
 // COMPONENT FOR PART DROPDOWN ...FOR NOT REPEATE ALL OPTIONS....
-function DetailOptions(){
-  return(
-      <div className="options__adult">
-        <span className="options__title">Adult</span>
-        <div className="options__controlls">
-          <button>
-            <HiMinus className="options__icon" />
-          </button>
-          <span className="options__number">1</span>
-          <button>
-            <HiPlus className="options__icon" />
-          </button>
-        </div>
+function DetailOptions({ options, type, minLimit,handleOptions }) {
+  return (
+    <div className="options__adult">
+      <span className="options__title">{type}</span>
+      <div className="options__controlls">
+        <button disabled={options[type] <= minLimit}  onClick={()=>handleOptions(type, "dec")}>
+          <HiMinus className="options__icon" />
+        </button>
+        <span className="options__number">{options[type]}</span>
+        <button   onClick={()=>handleOptions(type,"inc")}>
+          <HiPlus className="options__icon" />
+        </button>
       </div>
-  )
+    </div>
+  );
 }
