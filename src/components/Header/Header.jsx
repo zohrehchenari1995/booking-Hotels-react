@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { use, useRef, useState } from "react";
 import { HiCalendar, HiMinus, HiPlus, HiSearch } from "react-icons/hi";
 import { MdLocationOn } from "react-icons/md";
+import useOutsideClick from "../../hooks/useOutsideClick";
 
 function Header() {
   // STATE FOR DESTINATION...............................
@@ -58,7 +59,9 @@ function Header() {
             <span>{options.adult} adult &bull; {options.children} children &bull; {options.room} room </span>
           </div>
           {/* dropdown options jsx and conditional rendering for show dropDown */}
-          {openOptins && <Dropdown options={options}  handleOptions={handleOptions}/>}
+          {openOptins && 
+          <Dropdown options={options} 
+           handleOptions={handleOptions} setOpenOptions={setOpenOptions}/>}
         </div>
 
         {/* SEARCH ITEM.......................................... */}
@@ -78,9 +81,11 @@ function Header() {
 export default Header;
 
 // COMPONENTS FOR PART DROPDOWN (ADULT,CHILDREN,ROOM........)
-function Dropdown({ options, handleOptions }) {
+function Dropdown({ options, handleOptions,setOpenOptions }) {
+  const optionsRef = useRef();
+  useOutsideClick(optionsRef,"Dropdown",()=>setOpenOptions(false))
   return (
-    <div className="dropDown__options">
+    <div className="dropDown__options" ref={optionsRef}>
       <DetailOptions type="adult" options={options} minLimit={1}    handleOptions={handleOptions}/>
       <DetailOptions type="children" options={options} minLimit={0}    handleOptions={handleOptions}/>
       <DetailOptions type="room" options={options} minLimit={1}    handleOptions={handleOptions}/>
