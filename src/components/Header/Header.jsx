@@ -2,6 +2,10 @@ import React, { use, useRef, useState } from "react";
 import { HiCalendar, HiMinus, HiPlus, HiSearch } from "react-icons/hi";
 import { MdLocationOn } from "react-icons/md";
 import useOutsideClick from "../../hooks/useOutsideClick";
+import "react-date-range/dist/styles.css"; // main style file
+import "react-date-range/dist/theme/default.css"; // theme css file
+import { DateRange } from "react-date-range";
+import { format } from "date-fns";
 
 function Header() {
   // STATE FOR DESTINATION...............................
@@ -14,6 +18,18 @@ function Header() {
     children: 0,
     room: 1,
   });
+
+  // STATE FOR CALENDER RANGE...........................
+  const [date, setDate] = useState([
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: "selection",
+    },
+  ]);
+
+  // STATE FOR SHOW OR HIDDE STATUS CALENDER............
+  const [openDate, setOpenDate] = useState(false);
 
   // EVENTHANDLE FOR OPTIND MINUS $ PLUS FOR DETAILoPTIONS COMPONENT......
   const handleOptions = (name, operation) => {
@@ -28,10 +44,10 @@ function Header() {
   return (
     <div className="container-header">
       {/* ALL PART FOR SEARCH(DESTINATION, CALENDER, NUMBER HUMAN AND ROOM, SEARCH BUTTON) */}
+      {/* <button className="detail__bookmark">bookmark</button> */}
 
       <div className="header__detail">
         {/* BUTTON FOR BOOKMARK................................ */}
-        <button className="detail__bookmark">bookmark</button>
 
         {/* INPUT FOR DESTINATION............................... */}
         <div className="detail__destination">
@@ -49,19 +65,37 @@ function Header() {
         {/* CALENDER(date picker)............................................ */}
         <div className="detail__calender">
           <HiCalendar className="calender__icon" />
-          <div className="dateDropDown">2026/2/20</div>
+          <div className="dateDropdown" onClick={() => setOpenDate(!openDate)}>
+            {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyy")}`}
+          </div>
+          {openDate && (
+            <DateRange
+              ranges={date}
+              className="date"
+              onChange={(item) => setDate([item.selection])}
+              minDate={new Date()}
+              moveRangeFirstSelection={true}
+            />
+          )}
         </div>
 
         {/* SELECT OPTION FOR FILTER WITH ROOM AND CHILDREN AND ADULT...... */}
         <div className="detail__options">
           {/* event onclick for open and close deropdown */}
           <div id="dropDown" onClick={() => setOpenOptions(!openOptins)}>
-            <span>{options.adult} adult &bull; {options.children} children &bull; {options.room} room </span>
+            <span id="dropDown">
+              {options.adult} adult &bull; {options.children} children &bull;{" "}
+              {options.room} room{" "}
+            </span>
           </div>
           {/* dropdown options jsx and conditional rendering for show dropDown */}
-          {openOptins && 
-          <Dropdown options={options} 
-           handleOptions={handleOptions} setOpenOptions={setOpenOptions}/>}
+          {openOptins && (
+            <Dropdown
+              options={options}
+              handleOptions={handleOptions}
+              setOpenOptions={setOpenOptions}
+            />
+          )}
         </div>
 
         {/* SEARCH ITEM.......................................... */}
@@ -81,29 +115,47 @@ function Header() {
 export default Header;
 
 // COMPONENTS FOR PART DROPDOWN (ADULT,CHILDREN,ROOM........)
-function Dropdown({ options, handleOptions,setOpenOptions }) {
+function Dropdown({ options, handleOptions, setOpenOptions }) {
   const optionsRef = useRef();
-  useOutsideClick(optionsRef,"Dropdown",()=>setOpenOptions(false))
+  useOutsideClick(optionsRef, "dropDown", () => setOpenOptions(false));
   return (
     <div className="dropDown__options" ref={optionsRef}>
-      <DetailOptions type="adult" options={options} minLimit={1}    handleOptions={handleOptions}/>
-      <DetailOptions type="children" options={options} minLimit={0}    handleOptions={handleOptions}/>
-      <DetailOptions type="room" options={options} minLimit={1}    handleOptions={handleOptions}/>
+      <DetailOptions
+        type="adult"
+        options={options}
+        minLimit={1}
+        handleOptions={handleOptions}
+      />
+      <DetailOptions
+        type="children"
+        options={options}
+        minLimit={0}
+        handleOptions={handleOptions}
+      />
+      <DetailOptions
+        type="room"
+        options={options}
+        minLimit={1}
+        handleOptions={handleOptions}
+      />
     </div>
   );
 }
 
 // COMPONENT FOR PART DROPDOWN ...FOR NOT REPEATE ALL OPTIONS....
-function DetailOptions({ options, type, minLimit,handleOptions }) {
+function DetailOptions({ options, type, minLimit, handleOptions }) {
   return (
     <div className="options__adult">
       <span className="options__title">{type}</span>
       <div className="options__controlls">
-        <button disabled={options[type] <= minLimit}  onClick={()=>handleOptions(type, "dec")}>
+        <button
+          disabled={options[type] <= minLimit}
+          onClick={() => handleOptions(type, "dec")}
+        >
           <HiMinus className="options__icon" />
         </button>
         <span className="options__number">{options[type]}</span>
-        <button   onClick={()=>handleOptions(type,"inc")}>
+        <button onClick={() => handleOptions(type, "inc")}>
           <HiPlus className="options__icon" />
         </button>
       </div>

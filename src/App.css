@@ -2,7 +2,6 @@
   margin: 0 auto;
   max-width: 1100px;
   padding: 1rem;
-
 }
 
 /*----------------------------------------- WRAPPER */
@@ -16,11 +15,10 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   animation: fadeSlide 0.8s ease forwards;
   overflow: visible;
- 
 }
 
 /*----------------------------------BOOKMARK && LOGIN*/
-.detail__bookmark,
+/* .detail__bookmark,
 .detail__login {
   background-color: var(--text-300);
   padding: 0.7rem 1rem;
@@ -28,13 +26,13 @@
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
-}
+} */
 
-.detail__bookmark:hover,
+/* .detail__bookmark:hover,
 .detail__login:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
-}
+} */
 
 /*---------------------------------------DESTINATION*/
 .detail__destination {
@@ -73,14 +71,29 @@
   border-radius: 12px;
   transition: all 0.3s ease;
   cursor: pointer;
+  position: relative;
 }
 .calender__icon {
   color: var(--primary-700);
   font-size: 1.4rem;
 }
-.dateDropDown {
+.dateDropdown {
   margin-left: 0.5rem;
   font-size: 0.8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.date {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 999;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  width: 100%;
 }
 
 /*------------------------------------------- OPTIONS */
@@ -91,18 +104,18 @@
   font-size: 0.9rem;
   transition: all 0.3s ease;
   text-align: center;
-  min-width: 0; 
+  min-width: 0;
   position: relative;
   cursor: pointer;
+  flex: 1 0;
 }
 
-#dropDown{
+#dropDown {
   width: 100%;
   min-width: 0;
   transition: all 0.3s ease;
-
 }
-#dropDown span{
+#dropDown span {
   width: 100%;
   display: block;
   white-space: nowrap;
@@ -110,7 +123,7 @@
   text-overflow: ellipsis;
 }
 /* dropdown option... */
-.dropDown__options{
+.dropDown__options {
   position: absolute;
   top: calc(100% + 6px);
   left: 0;
@@ -126,38 +139,38 @@
   max-height: 220px;
   overflow-y: auto;
   cursor: pointer;
+  min-width: 140px;
+  max-width: 90rem;
 }
-
-
 
 .options__adult,
 .options__children,
-.options__room{
+.options__room {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.options__icon{
-  background-color: var(--text-400) ;
+.options__icon {
+  background-color: var(--text-400);
   padding: 0.2rem;
   border-radius: 2px;
   color: white;
   font-size: 1.1rem;
 }
-.options__title{
+.options__title {
   font-weight: bold;
   color: var(--text-700);
 }
-.options__number{
+.options__number {
   color: var(--text-700);
   font-weight: bold;
 }
-.options__controlls{
+.options__controlls {
   width: 50%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-} 
+}
 
 /*--------------------------------------------SEARCH */
 .detail__serarch {
@@ -187,10 +200,10 @@
     gap: 1rem;
   }
 
-  .detail__bookmark,
+  /* .detail__bookmark,
   .detail__login {
     flex-shrink: 0;
-  }
+  } */
 
   .detail__destination {
     flex: 2;
@@ -200,13 +213,24 @@
     flex: 1;
     text-align: center;
   }
+  .date {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 999;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    width: 340px;
+  }
 
   .detail__options {
     flex: 1;
   }
 
   .detail__serarch {
-    flex-shrink: 0;
+    flex-shrink: 0 1 auto;
+    max-width: 80px;
     padding: 0.8rem 1.2rem;
   }
 }
