@@ -44,9 +44,9 @@ function Header() {
   return (
     <div className="container-header">
       {/* ALL PART FOR SEARCH(DESTINATION, CALENDER, NUMBER HUMAN AND ROOM, SEARCH BUTTON) */}
-      {/* <button className="detail__bookmark">bookmark</button> */}
 
       <div className="header__detail">
+      <button className="detail__bookmark">bookmark</button>
         {/* BUTTON FOR BOOKMARK................................ */}
 
         {/* INPUT FOR DESTINATION............................... */}
@@ -106,7 +106,7 @@ function Header() {
         </div>
 
         {/* LOGIN FOREM.......................................... */}
-        {/* <button className="detail__login">login</button> */}
+        <button className="detail__login">login</button>
       </div>
     </div>
   );
