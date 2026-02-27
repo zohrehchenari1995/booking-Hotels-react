@@ -296,27 +296,27 @@
   aspect-ratio: 4/3;
   border-radius: var(--rounded-2xl);
 }
-.content__items-detail{
+.content__items-detail {
   display: flex;
   flex-direction: column;
 }
-.items__location{
+.items__location {
   font-size: 1.5rem;
   font-weight: bold;
-  margin: 0.7rem  0  0.01rem  0;
+  margin: 0.7rem 0 0.01rem 0;
   color: var(--text-700);
 }
-.items__name{
+.items__name {
   font-size: 1.2rem;
   margin: 0.8rem 0 0.4rem 0;
   color: var(--text-500);
 }
-.items__price{
+.items__price {
   font-size: 1.2rem;
   margin: 0.8rem 0 0.4rem 0;
   font-weight: bold;
 }
-.items__price .price__detail{
+.items__price .price__detail {
   color: var(--text-400);
 }
 
@@ -331,5 +331,74 @@
   .locations__content {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+  }
+}
+
+/*------------------------------------------------------------------------------ STYLE FOR HOTELS COMPONENT  */
+.hotels__content-search {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.hotels__map img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+.all__hotels {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  max-width: 100%;
+}
+.hotels__item img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 10px;
+  margin-top: 1.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .hotels__content-search {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .all__hotels {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .hotels__content-search {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    height: 100vh;
+  }
+  .all__hotels {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column: 1/2;
+    grid-row: 1/-1;
+  }
+  .hotels__item img {
+    width: 60%;
+    aspect-ratio: 4/3;
+    border-radius: 10px;
+    margin-top: 0;
+  }
+  .hotels__map {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column: 2/3;
+    height: 100vh;
+  }
+  .hotels__map img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
   }
 }

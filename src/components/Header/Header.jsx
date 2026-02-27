@@ -6,6 +6,7 @@ import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRange } from "react-date-range";
 import { format } from "date-fns";
+import { createSearchParams, useNavigate, useSearchParams } from "react-router-dom";
 
 function Header() {
   // STATE FOR DESTINATION...............................
@@ -18,7 +19,6 @@ function Header() {
     children: 0,
     room: 1,
   });
-
   // STATE FOR CALENDER RANGE...........................
   const [date, setDate] = useState([
     {
@@ -27,9 +27,12 @@ function Header() {
       key: "selection",
     },
   ]);
-
   // STATE FOR SHOW OR HIDDE STATUS CALENDER............
   const [openDate, setOpenDate] = useState(false);
+  // STATE FOR NAVIGATE TO HOTELS(for redirect from home page to hotels page after click on search button..........)
+  const navigate = useNavigate(); 
+  // STATE SEARCHPARAMS FOR SHOW CHANGE DATE OBJECT AND OPTIONS OBJECT.....
+  const[searchparams, setSearchParams] = useSearchParams();
 
   // EVENTHANDLE FOR OPTIND MINUS $ PLUS FOR DETAILoPTIONS COMPONENT......
   const handleOptions = (name, operation) => {
@@ -40,6 +43,20 @@ function Header() {
       };
     });
   };
+
+  // EVENTHANDLER FOR SEARCH BUTTON and update with hook useNavigate....................
+  const handleSearch = ()=>{
+   const encodedParams= createSearchParams({
+      date:JSON.stringify(date),
+      destination,
+      options:JSON.stringify(options),
+    });
+      navigate({
+        pathname:"/hotels",
+        // query string.....
+        search:encodedParams.toString(),
+      });
+  }
 
   return (
     <div className="container-header">
@@ -100,7 +117,7 @@ function Header() {
 
         {/* SEARCH ITEM.......................................... */}
         <div className="detail__serarch">
-          <button className="search__button">
+          <button className="search__button"  onClick={handleSearch}>
             <HiSearch className="search__icon" />
           </button>
         </div>
