@@ -116,8 +116,8 @@ function Header() {
         </div>
 
         {/* SEARCH ITEM.......................................... */}
-        <div className="detail__serarch">
-          <button className="search__button"  onClick={handleSearch}>
+        <div className="detail__serarch"  onClick={handleSearch}>
+          <button className="search__button"  >
             <HiSearch className="search__icon" />
           </button>
         </div>

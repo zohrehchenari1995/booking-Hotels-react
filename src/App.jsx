@@ -4,7 +4,7 @@ import "./App.css";
 import { Toaster } from "react-hot-toast";
 import LocationList from "./components/LocationList/LocationList";
 import { Route, Routes } from "react-router-dom";
-import Hotels from "./components/Hotels/Hotels";
+import AppLayout from "./components/AppLayout/AppLayout";
 
 function App() {
   return (
@@ -14,7 +14,10 @@ function App() {
       {/* all route............ */}
       <Routes>
         <Route path="/" element={<LocationList />} />
-        <Route path="/hotels" element={<Hotels />} />
+        <Route path="/hotels" element={<AppLayout />} >
+       <Route index element={<div>hotels filter</div>}/>
+         <Route path=":id" element={<div> single hotels </div>}/> 
+        </Route>
       </Routes>
     </div>
   );
