@@ -7,10 +7,17 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRange } from "react-date-range";
 import { format } from "date-fns";
 import { createSearchParams, useNavigate, useSearchParams } from "react-router-dom";
+import { createPortal } from "react-dom";
+
+
 
 function Header() {
+   // STATE SEARCHPARAMS FOR SHOW CHANGE DATE OBJECT AND OPTIONS OBJECT.....
+  const[searchparams, setSearchParams] = useSearchParams();
+
   // STATE FOR DESTINATION...............................
-  const [destination, setDestination] = useState("");
+  const [destination, setDestination] = useState(searchparams.get(("destination")|| ""));
+  console.log(searchparams.get("destination"));
   // STATE FOR OPENOPTIONS(ADULT & CHILDREN & ROOM)......
   const [openOptins, setOpenOptions] = useState(false);
   //STATE FOR UNDERESTAND TYPE OPTIONS...................
@@ -31,9 +38,7 @@ function Header() {
   const [openDate, setOpenDate] = useState(false);
   // STATE FOR NAVIGATE TO HOTELS(for redirect from home page to hotels page after click on search button..........)
   const navigate = useNavigate(); 
-  // STATE SEARCHPARAMS FOR SHOW CHANGE DATE OBJECT AND OPTIONS OBJECT.....
-  const[searchparams, setSearchParams] = useSearchParams();
-
+ 
   // EVENTHANDLE FOR OPTIND MINUS $ PLUS FOR DETAILoPTIONS COMPONENT......
   const handleOptions = (name, operation) => {
     setOptions((prev) => {
@@ -63,8 +68,8 @@ function Header() {
       {/* ALL PART FOR SEARCH(DESTINATION, CALENDER, NUMBER HUMAN AND ROOM, SEARCH BUTTON) */}
 
       <div className="header__detail">
-      <button className="detail__bookmark">bookmark</button>
         {/* BUTTON FOR BOOKMARK................................ */}
+      <button className="detail__bookmark">bookmark</button>
 
         {/* INPUT FOR DESTINATION............................... */}
         <div className="detail__destination">
@@ -101,8 +106,7 @@ function Header() {
           {/* event onclick for open and close deropdown */}
           <div id="dropDown" onClick={() => setOpenOptions(!openOptins)}>
             <span id="dropDown">
-              {options.adult} adult &bull; {options.children} children &bull;{" "}
-              {options.room} room{" "}
+              {options.adult} adult &bull; {options.children} children &bull; {options.room} room
             </span>
           </div>
           {/* dropdown options jsx and conditional rendering for show dropDown */}
@@ -116,8 +120,8 @@ function Header() {
         </div>
 
         {/* SEARCH ITEM.......................................... */}
-        <div className="detail__serarch"  onClick={handleSearch}>
-          <button className="search__button"  >
+        <div className="detail__serarch" onClick={handleSearch}>
+          <button className="search__button"   >
             <HiSearch className="search__icon" />
           </button>
         </div>
