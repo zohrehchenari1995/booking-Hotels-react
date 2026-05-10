@@ -6,7 +6,7 @@ import LocationList from "./components/LocationList/LocationList";
 import { Route, Routes } from "react-router-dom";
 import AppLayout from "./components/AppLayout/AppLayout";
 import Hotels from "./components/Hotels/Hotels";
-import HotelsProvider from "./components/components/HotelsProvider";
+import HotelsProvider from "./components/context/HotelsProvider";
 
 
 function App() {
@@ -30,3 +30,5 @@ function App() {
 }
 
 export default App;
+
+

@@ -13,11 +13,11 @@ import { createPortal } from "react-dom";
 
 function Header() {
    // STATE SEARCHPARAMS FOR SHOW CHANGE DATE OBJECT AND OPTIONS OBJECT.....
-  const[searchparams, setSearchParams] = useSearchParams();
+  const[searchParams, setSearchParams] = useSearchParams();
 
   // STATE FOR DESTINATION...............................
-  const [destination, setDestination] = useState(searchparams.get(("destination")|| ""));
-  console.log(searchparams.get("destination"));
+  const [destination, setDestination] = useState(searchParams.get(("destination")|| ""));
+  console.log(searchParams.get("destination"));
   // STATE FOR OPENOPTIONS(ADULT & CHILDREN & ROOM)......
   const [openOptins, setOpenOptions] = useState(false);
   //STATE FOR UNDERESTAND TYPE OPTIONS...................

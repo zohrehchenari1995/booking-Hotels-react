@@ -1,11 +1,13 @@
 
 import { Link } from "react-router-dom";
 import Loader from "../Loader/Loader";
-import { useHotels } from "../components/HotelsProvider";
+import { useHotels } from "../context/HotelsProvider";
 
 
 
 function Hotels() {
+
+
  const {isLoader, hotels} = useHotels();
 
   if (isLoader) return <Loader />;
@@ -20,6 +22,7 @@ function Hotels() {
           <Link
             key={item.id}
             to={`/hotels/${item.id}?lat=${item.latitude}&lng=${item.longitude}`}
+           
           >
             <div className="hotels__item item__one">
               <img src={item.picture_url.url} alt={item.name} />
