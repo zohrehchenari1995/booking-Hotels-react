@@ -12,8 +12,13 @@ function HotelsProvider({children}) {
   const destination = searchParams.get("destination");
   const room = JSON.parse(searchParams.get("options"))?.room;
 
+
+
+
+
+
 //  FETCH DATA AND SET QUERYSTRING............
-   const { data:hotels, isLoader } = useFetch(
+   const { data:hotels = [], isLoader } = useFetch(
     "http://localhost:5000/hotels",
      `q=${destination || ""}&accommodates_gte=${room || 1}`,
  );

@@ -16,8 +16,7 @@ function Header() {
   const[searchParams, setSearchParams] = useSearchParams();
 
   // STATE FOR DESTINATION...............................
-  const [destination, setDestination] = useState(searchParams.get(("destination")|| ""));
-  console.log(searchParams.get("destination"));
+  const [destination, setDestination] = useState(searchParams.get("destination")|| "");
   // STATE FOR OPENOPTIONS(ADULT & CHILDREN & ROOM)......
   const [openOptins, setOpenOptions] = useState(false);
   //STATE FOR UNDERESTAND TYPE OPTIONS...................
@@ -70,6 +69,9 @@ function Header() {
       <div className="header__detail">
         {/* BUTTON FOR BOOKMARK................................ */}
       <button className="detail__bookmark">bookmark</button>
+
+
+
 
         {/* INPUT FOR DESTINATION............................... */}
         <div className="detail__destination">

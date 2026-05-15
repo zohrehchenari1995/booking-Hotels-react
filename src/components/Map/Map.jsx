@@ -1,0 +1,54 @@
+import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
+import { useHotels } from "../context/HotelsProvider";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+
+function Map() {
+  //  CUSTOMHOOKS FOR GET INFO HOTELS....
+  const { hotels, isLoader } = useHotels();
+  // STATE GET LAT & LNG FOR FET MAPCENTER ....
+  const [mapCenter, setMapCenter] = useState([20 , 3]);
+  // STATE FOR GET LAT & LNG IN URL (CHANGE ROUTE(MAP) HOTELS TO SINGLE HOTELS AND SINGLE HOTELS TO HOTELS)=>for show center pin on map
+  const [searchParams, setSearchParams] = useSearchParams();
+  const lat = Number(searchParams.get("lat")) ;
+  const lng = Number(searchParams.get("lng")) ;
+
+  // USEeFFECT FOR SYNC LAT & LNG WITH COMPONENT
+  useEffect(()=>{
+    if(lat && lng) setMapCenter([lat , lng])
+  },[lat,lng])
+
+
+  return (
+    <div className="hotels__map">
+      <MapContainer
+        className="map"
+        center={mapCenter}
+        zoom={13}
+        scrollWheelZoom={true}
+      >
+        <ChangeCenter position={mapCenter} />
+
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
+        />
+        {hotels.map((item) => (
+          <Marker key={item.id} position={[item.latitude, item.longitude]}>
+            <Popup>{item.host_location}</Popup>
+          </Marker>
+        ))}
+      </MapContainer>
+    </div>
+  );
+}
+
+export default Map;
+
+
+// CUSTOMHOOKS FOR UPDATE MAPCENTER(LAT & LNG)
+function ChangeCenter({position}){
+  const map = useMap();
+  map.setView(position);
+  return null;
+}

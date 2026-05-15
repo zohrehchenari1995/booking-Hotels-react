@@ -8,7 +8,7 @@ import { useHotels } from "../context/HotelsProvider";
 function Hotels() {
 
 
- const {isLoader, hotels} = useHotels();
+ const {hotels, isLoader} = useHotels();
 
   if (isLoader) return <Loader />;
 
@@ -17,11 +17,13 @@ function Hotels() {
     <div>
       <h2 className="search__title">Search Resault ({hotels.length})</h2>
 
-      {hotels.map((item) => {
+      {hotels ?.map((item) => {
         return (
           <Link
             key={item.id}
+          
             to={`/hotels/${item.id}?lat=${item.latitude}&lng=${item.longitude}`}
+           
            
           >
             <div className="hotels__item item__one">
