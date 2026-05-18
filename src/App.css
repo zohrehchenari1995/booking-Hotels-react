@@ -107,7 +107,6 @@
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
   overflow: hidden;
   width: 100%;
-
 }
 
 /*--------------------------------------------------------------------------------------------- OPTIONS */
@@ -275,7 +274,6 @@
   margin: 1rem 0 5rem 0;
   position: relative;
   z-index: -1;
-
 }
 
 .all-content {
@@ -338,7 +336,7 @@
 }
 
 /*------------------------------------------------------------------------------ STYLE FOR HOTELS COMPONENT  */
-.search__title{
+.search__title {
   margin-bottom: 1rem;
 }
 /* !!!! اصلاح بشه  تقو یم و دراپ دوون میره زیر محتوای صفح */
@@ -349,7 +347,7 @@
   position: relative;
   z-index: 1;
 }
-.hotels__map{
+.hotels__map {
   flex: 1;
   background-color: var(--text-100);
   position: relative;
@@ -363,7 +361,7 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-   position: relative;
+  position: relative;
   z-index: 2;
 }
 .hotels__item img {
@@ -372,31 +370,45 @@
   object-fit: cover;
   margin-top: 2rem;
   border-radius: 12px;
-
 }
-.hotels__location{
+.hotels__location {
   font-size: 1.5rem;
   font-weight: bold;
   color: var(--text-700);
-  }
-  .hotels__name{
-     font-size: 1.2rem;
+}
+.hotels__name {
+  font-size: 1.2rem;
   margin: 0.8rem 0 0.4rem 0;
   color: var(--text-500);
-  }
-  .hotels__price{
-     font-size: 1.2rem;
+}
+.hotels__price {
+  font-size: 1.2rem;
   margin: 0.8rem 0 0.4rem 0;
   font-weight: bold;
-  }
-  .hotels__price .price__detail {
+}
+.hotels__price .price__detail {
   color: var(--text-400);
+}
+/* STYLE FOR BUTTON MAP IN MAP.JSX COMPONENT...... */
+
+.hotels__map button.geoLocation {
+  padding: 0.3rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  background-color: var(--primary-600);
+  box-shadow: 0 0 10px var(--primary-600);
+  color: #fff;
+  z-index: 1000;
 }
 
 @media screen and (min-width: 768px) {
-  .search__title{
-  margin: 1rem 0 1rem 0;
-}
+  .search__title {
+    margin: 1rem 0 1rem 0;
+  }
   .all__hotels {
     display: flex;
     flex-direction: row;
@@ -407,17 +419,16 @@
     width: 70%;
     padding: 10px;
   }
-  .hotels__item img{
+  .hotels__item img {
     /* width: 100%; */
     height: 200px;
   }
-   
 }
 
 @media screen and (min-width: 1024px) {
-    .search__title{
-  margin-top: 0;
-}
+  .search__title {
+    margin-top: 0;
+  }
   .hotels__content-search {
     display: flex;
     flex-direction: row;
@@ -440,16 +451,14 @@
     flex-wrap: nowrap;
     height: 100vh;
     overflow-y: auto;
-   
   }
   .hotels__item {
     width: 100%;
     padding: 0;
     overflow-y: auto;
     display: flex;
-
   }
- 
+
   .hotels__item img {
     width: 100px;
     height: 100px;
@@ -458,29 +467,31 @@
     margin-right: 1rem;
     margin-bottom: 1.5rem;
   }
-  .hotels__description{
+  .hotels__description {
     display: flex;
     flex-direction: column;
   }
-  .hotels__name{
+  .hotels__name {
     margin-bottom: 0;
   }
-  
 }
 
 
-/* STYLE FOR MAP IN MAP.JSX COMPONENT...... */
-
-.mapContainer button.getLocation {
-  padding: 0.3rem 0.5rem;
-  font-size: 0.7rem;
+/* STYLE FOR SINGLE HOTEL...... */
+.room{
+  padding-right: 4rem;
+}
+.roomDetail h2{
+  font-size: 1.5rem;
   font-weight: bold;
-  border-radius: 0.5rem;
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-  background-color: var(--primary-600);
-  box-shadow: 0 0 10px var(--primary-600);
-  color: #fff;
-  z-index: 1000;
+  margin-bottom: 0.5rem;
+}
+.room__review-location{
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+.roomDetail img{
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 12px;
 }

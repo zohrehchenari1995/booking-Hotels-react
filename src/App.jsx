@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import AppLayout from "./components/AppLayout/AppLayout";
 import Hotels from "./components/Hotels/Hotels";
 import HotelsProvider from "./components/context/HotelsProvider";
+import SingleHotel from "./components/SingleHotel/SingleHotel";
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
           <Route index element={<Hotels />} />
           <Route
             path=":id"
-            element={<div style={{ color: "red" }}> single hotels </div>}
+            element={<SingleHotel/> }
           />
         </Route>
       </Routes>
