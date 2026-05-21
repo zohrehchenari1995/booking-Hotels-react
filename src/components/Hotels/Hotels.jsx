@@ -8,7 +8,7 @@ import { useHotels } from "../context/HotelsProvider";
 function Hotels() {
 
 
- const {hotels, isLoader} = useHotels();
+ const {hotels, isLoader, currentHotel  } = useHotels();
 
   if (isLoader) return <Loader />;
 
@@ -26,7 +26,9 @@ function Hotels() {
            
            
           >
-            <div className="hotels__item item__one">
+            {/* ADD DYNAMIC STYLE FOR SHOW SELECT HOTELS IN HOTELS ROUTE WITH BORDER... */}
+            <div className={`hotels__item item__one  ${item.id === currentHotel?.id? "currentHotel":""}`} >
+
               <img src={item.picture_url.url} alt={item.name} />
 
               <div className="hotels__description">

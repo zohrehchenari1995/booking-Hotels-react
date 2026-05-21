@@ -363,6 +363,7 @@
   flex-wrap: wrap;
   position: relative;
   z-index: 2;
+  padding-right: 1rem;
 }
 .hotels__item img {
   width: 100%;
@@ -494,4 +495,13 @@
   width: 100%;
   aspect-ratio: 4/3;
   border-radius: 12px;
+}
+
+/* hotels */
+.currentHotel{
+  border: 3px solid var(--text-400);
+  padding-top: 1.2rem;
+  margin-bottom: 0.5rem;
+  padding-left: 0.1rem;
+  border-radius: 0.5rem;
 }
