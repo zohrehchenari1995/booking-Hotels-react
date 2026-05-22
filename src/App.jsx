@@ -8,6 +8,7 @@ import AppLayout from "./components/AppLayout/AppLayout";
 import Hotels from "./components/Hotels/Hotels";
 import HotelsProvider from "./components/context/HotelsProvider";
 import SingleHotel from "./components/SingleHotel/SingleHotel";
+import Bookmark from "./components/Bookmark/Bookmark";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             element={<SingleHotel/> }
           />
         </Route>
+        <Route path="/bookmark" element={<Bookmark/>}/>
       </Routes>
  </HotelsProvider>
   );
