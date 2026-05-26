@@ -9,8 +9,8 @@ function Map({markerLocation}) {
   const [mapCenter, setMapCenter] = useState([20, 3]);
   // STATE FOR GET LAT & LNG IN URL (CHANGE ROUTE(MAP) HOTELS TO SINGLE HOTELS AND SINGLE HOTELS TO HOTELS)=>for show center pin on map
   const [searchParams, setSearchParams] = useSearchParams();
-  const lat = Number(searchParams.get("lat"));
-  const lng = Number(searchParams.get("lng"));
+  const lat = searchParams.get("lat");
+  const lng = searchParams.get("lng");
 
   // CALL CUSTOM HOOK FOR GEOLOCATION...
   const{isLoading, position: geoLocationPosition, getPosition} = useGeoLocation();
@@ -78,7 +78,7 @@ function DetectClick(){
 
   // useMapEvent hook for understand user click on map
   useMapEvent({
-    click:e=> navigate(`/bookmark? lat=${e.latlng.lat} & lng=${e.latlng.lng}`)
+    click:e=> navigate(`/bookmark/add?lat=${e.latlng.lat} & lng=${e.latlng.lng}`)
   });
   return null;
 }

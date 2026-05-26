@@ -1,13 +1,13 @@
 import { createContext, useContext, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
-import { PiOpenAiLogo } from "react-icons/pi";
+// import { PiOpenAiLogo } from "react-icons/pi";
 import toast from "react-hot-toast";
 import axios from "axios";
 
 // CREATE CONTEXT...
 const HotelContext = createContext();
-const BASE_URL ="http://localhost:5000/hotels"
+const BASE_URL ="http://localhost:5000/hotels";
 
 // HOTELSPROVIDER COMPONENT FOR COVER OTHER COMPONENTS WITH TRANSMISSION VALUE IN CONTEXT...
 function HotelsProvider({ children }) {
