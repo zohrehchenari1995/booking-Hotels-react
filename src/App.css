@@ -505,3 +505,16 @@
   padding-left: 0.1rem;
   border-radius: 0.5rem;
 }
+
+
+/* BOOKMAR ROUTE FOR SHOW COUNTRY FLAG  */
+.bookmarkList{
+  margin-top: 1.5rem;
+}
+.BookmarkItem{
+  border: 1px solid var(--text-400);
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  
+}
