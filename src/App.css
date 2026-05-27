@@ -518,3 +518,18 @@
   border-radius: 12px;
   
 }
+.current-bookmark{
+  border: 3px solid var(--primary-700);
+}
+
+.btn.btn--back{
+  border: 1px solid var(--primary-600);
+  padding: 0.5rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-100);
+  margin-bottom: 1rem;
+  background-color: var(--primary-700);
+}
