@@ -533,3 +533,46 @@
   margin-bottom: 1rem;
   background-color: var(--primary-700);
 }
+
+/* form */
+
+.formControl label{
+  display: block;
+  margin: 0.4rem 0;
+}
+
+.form .formControl {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  position: relative;
+}
+.formControl input {
+  border: 1px solid var(--text-400);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+.buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.btn--primary{
+  border:1px solid var(--primary-700);
+  padding: 0.5rem;
+  border-radius: 8px;
+  background-color: var(--primary-700);
+  color: white;
+  font-weight: bold;
+}
+.btn.btns--back{
+  border: 1px solid var(--primary-600);
+  padding: 0.5rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
