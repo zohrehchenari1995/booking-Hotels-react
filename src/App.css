@@ -576,3 +576,9 @@
   margin-bottom: 1rem;
   font-weight: bold;
 }
+/* flag */
+.formControl .flag {
+  position: absolute;
+  right: 1rem;
+  top: 60%;
+}

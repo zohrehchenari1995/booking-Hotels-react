@@ -10,7 +10,7 @@ function Map({ markerLocation }) {
   // STATE FOR GET LAT & LNG IN URL (CHANGE ROUTE(MAP) HOTELS TO SINGLE HOTELS AND SINGLE HOTELS TO HOTELS)=>for show center pin on map
   const [searchParams, setSearchParams] = useSearchParams();
   const [lat, lng] = useUrlLocation();
-  console.log(lat,lng);
+  
 
   // CALL CUSTOM HOOK FOR GEOLOCATION...
   const {
