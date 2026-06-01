@@ -66,6 +66,27 @@ function BookmarkProvider({ children }) {
     }
   }
 
+  // function for delete bookmarkList in route bookmark....
+   async function deleteBookmark(id) {
+    setIsLoader(true);
+    try {
+
+    await axios.delete(`${BASE_URL}/bookmarks/${id}`);
+
+      // for show old bookmark city and new bookmark city...
+      setBookmarks((prev)=>prev.filter ((item)=>item.id !== id));
+     
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setIsLoader(false);
+    }
+  }
+
+
+
+
+
   return (
     <BookmarkContext.Provider
       value={{
@@ -74,6 +95,7 @@ function BookmarkProvider({ children }) {
         currentBookmark,
         getBookmark,
         createBookmark,
+        deleteBookmark
       }}
     >
       {children}

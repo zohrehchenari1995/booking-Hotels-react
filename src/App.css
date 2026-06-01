@@ -507,7 +507,7 @@
 }
 
 
-/* BOOKMAR ROUTE FOR SHOW COUNTRY FLAG  */
+/* BOOKMAR ROUTE FOR SHOW COUNTRY FLAG (bookmarkList page) */
 .bookmarkList{
   margin-top: 1.5rem;
 }
@@ -516,8 +516,11 @@
   padding: 1.2rem 1.5rem;
   margin-bottom: 1.5rem;
   border-radius: 12px;
-  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+
 .current-bookmark{
   border: 3px solid var(--primary-700);
 }
@@ -532,6 +535,10 @@
   color: var(--primary-100);
   margin-bottom: 1rem;
   background-color: var(--primary-700);
+}
+.trash{
+  color: var(--rose-500);
+  font-size: 1.2rem;
 }
 
 /* form */
@@ -582,3 +589,5 @@
   right: 1rem;
   top: 60%;
 }
+
+/*  */
