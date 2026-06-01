@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "../Loader/Loader";
 import ReactCountryFlag from "react-country-flag";
+import { usebookmark } from "../context/BookmarkListContext";
 
 const BASE_GEOCODING_URL =
   "https://api.bigdatacloud.net/data/reverse-geocode-client";
@@ -16,10 +17,7 @@ function AddNewBookmark() {
   const [countryCode, setCountryCode] = useState("");
   const [isLoadingGeoCoding, setIsLoadingGeoCoading] = useState(false);
   const [geoCodingError, setGeoCodingError] = useState(null);
-
-
-
-
+  const { createBookmark } = usebookmark();
 
   // for loade component....
   useEffect(() => {
@@ -33,16 +31,17 @@ function AddNewBookmark() {
           `${BASE_GEOCODING_URL}?latitude=${lat}&longitude=${lng}`,
         );
         // if lat and lng ont exist =>not countrycode...
-        if(!data.countryCode) throw new Error("this location is not city! please click somewhere else!!!");
+        if (!data.countryCode)
+          throw new Error(
+            "this location is not city! please click somewhere else!!!",
+          );
 
         setCityName(data.city || data.locality || "");
         setCountry(data.countryName);
         setCountryCode(data.countryCode);
-      } 
-      catch (error) {
+      } catch (error) {
         setGeoCodingError(error.message);
-      }
-       finally {
+      } finally {
         setIsLoadingGeoCoading(false);
       }
     }
@@ -50,13 +49,30 @@ function AddNewBookmark() {
     fetchLocationData();
   }, [lat, lng]);
 
-  if (isLoadingGeoCoding) return <Loader />;
-  if(geoCodingError) return <p>{geoCodingError}</p>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!cityName || !country) return;
 
+    const newBookmark = {
+      cityName,
+      country,
+      countryCode,
+      latitude: lat, 
+      longitude: lng,
+      host_location: cityName + "" + country,
+    };
+
+    await createBookmark(newBookmark);
+    navigate("/bookmark");
+  };
+
+  if (isLoadingGeoCoding) return <Loader />;
+  // if (geoCodingError) return <p>{geoCodingError}</p>;
+ 
   return (
     <div>
       <h2>Bookmark New Location</h2>
-      <form action="" className="form">
+      <form action="" className="form" onSubmit={handleSubmit}>
         <div className="formControl">
           <label htmlFor="cityName">CityName</label>
           <input
@@ -81,7 +97,7 @@ function AddNewBookmark() {
             name="country"
             id="country"
           />
-        <ReactCountryFlag  className="flag" svg countryCode={countryCode}/>
+          <ReactCountryFlag className="flag" svg countryCode={countryCode} />
         </div>
 
         <div className="buttons">

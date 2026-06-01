@@ -1,4 +1,11 @@
-import {MapContainer,Marker,Popup,TileLayer,useMap,useMapEvent} from "react-leaflet";
+import {
+  MapContainer,
+  Marker,
+  Popup,
+  TileLayer,
+  useMap,
+  useMapEvent,
+} from "react-leaflet";
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import useGeoLocation from "../../hooks/useGeoLocation";
@@ -10,7 +17,6 @@ function Map({ markerLocation }) {
   // STATE FOR GET LAT & LNG IN URL (CHANGE ROUTE(MAP) HOTELS TO SINGLE HOTELS AND SINGLE HOTELS TO HOTELS)=>for show center pin on map
   const [searchParams, setSearchParams] = useSearchParams();
   const [lat, lng] = useUrlLocation();
-  
 
   // CALL CUSTOM HOOK FOR GEOLOCATION...
   const {
@@ -29,6 +35,8 @@ function Map({ markerLocation }) {
     if (geoLocationPosition?.lat && geoLocationPosition?.lng)
       setMapCenter([geoLocationPosition.lat, geoLocationPosition.lng]);
   }, [geoLocationPosition]);
+
+  // console.log(markerLocation)
 
   return (
     <div className="hotels__map">
@@ -53,11 +61,26 @@ function Map({ markerLocation }) {
           url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
         />
 
-        {markerLocation.map((item) => (
+        {/* {markerLocation.map((item) => (
+
+          
           <Marker key={item.id} position={[item.latitude, item.longitude]}>
             <Popup>{item.host_location}</Popup>
           </Marker>
-        ))}
+        ))} */}
+
+        {markerLocation.map((item) => {
+          const lat = Number(item.latitude);
+          const lng = Number(item.longitude ?? item.longitiude);
+
+          if (!lat || !lng) return null;
+
+          return (
+            <Marker key={item.id} position={[lat, lng]}>
+              <Popup>{item.host_location}</Popup>
+            </Marker>
+          );
+        })}
       </MapContainer>
     </div>
   );
