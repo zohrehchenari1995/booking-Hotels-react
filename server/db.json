@@ -1352,13 +1352,31 @@
       "id": 3
     },
     {
-      "cityName": "Al Aḩmadi",
-      "country": "Kuwait",
-      "countryCode": "KW",
-      "latitude": "28.783379606777718",
-      "longitude": "48.066043390412496",
-      "host_location": "Al AḩmadiKuwait",
+      "cityName": "Andropovsky District",
+      "country": "Russian Federation (the)",
+      "countryCode": "RU",
+      "latitude": "44.471810000195376",
+      "longitude": "42.69572322626546",
+      "host_location": "Andropovsky DistrictRussian Federation (the)",
       "id": 4
+    },
+    {
+      "cityName": "Le Plessis-Pate",
+      "country": "France",
+      "countryCode": "FR",
+      "latitude": "48.59894005781855",
+      "longitude": "2.3492664810632973",
+      "host_location": "Le Plessis-PateFrance",
+      "id": 5
+    },
+    {
+      "cityName": "Vert-le-Grand",
+      "country": "France",
+      "countryCode": "FR",
+      "latitude": "48.57203939811693",
+      "longitude": "2.362170981032179",
+      "host_location": "Vert-le-GrandFrance",
+      "id": 6
     }
   ]
 }
