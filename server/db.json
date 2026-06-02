@@ -1325,24 +1325,6 @@
   ],
   "bookmarks": [
     {
-      "cityName": "Tin Zaouatine",
-      "country": "Algeria",
-      "countryCode": "DZ",
-      "latitude": "20.018923450850806",
-      "longitude": "2.9887856376196718",
-      "host_location": "Tin ZaouatineAlgeria",
-      "id": 1
-    },
-    {
-      "cityName": "Pielavesi",
-      "country": "Finland",
-      "countryCode": "FI",
-      "latitude": "63.176030872104114",
-      "longitude": "26.71269188140195",
-      "host_location": "PielavesiFinland",
-      "id": 2
-    },
-    {
       "cityName": "Al Aḩmadi",
       "country": "Kuwait",
       "countryCode": "KW",
@@ -1368,15 +1350,6 @@
       "longitude": "2.3492664810632973",
       "host_location": "Le Plessis-PateFrance",
       "id": 5
-    },
-    {
-      "cityName": "Vert-le-Grand",
-      "country": "France",
-      "countryCode": "FR",
-      "latitude": "48.57203939811693",
-      "longitude": "2.362170981032179",
-      "host_location": "Vert-le-GrandFrance",
-      "id": 6
     }
   ]
 }

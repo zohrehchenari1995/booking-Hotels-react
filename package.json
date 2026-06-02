@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "server": "json-server --watch server/db.json --port 5000 --delay 500"
+ 
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
