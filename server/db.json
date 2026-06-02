@@ -1341,6 +1341,24 @@
       "longitude": "26.71269188140195",
       "host_location": "PielavesiFinland",
       "id": 2
+    },
+    {
+      "cityName": "Al Aḩmadi",
+      "country": "Kuwait",
+      "countryCode": "KW",
+      "latitude": "28.735639019939562",
+      "longitude": "48.14495530557127",
+      "host_location": "Al AḩmadiKuwait",
+      "id": 3
+    },
+    {
+      "cityName": "Al Aḩmadi",
+      "country": "Kuwait",
+      "countryCode": "KW",
+      "latitude": "28.783379606777718",
+      "longitude": "48.066043390412496",
+      "host_location": "Al AḩmadiKuwait",
+      "id": 4
     }
   ]
 }
