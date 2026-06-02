@@ -77,7 +77,3 @@ A modern hotel booking application that allows users to search, explore, and sav
 ---
 
 
-git clone https://github.com/your-username/hotel-booking-app.git
-cd hotel-booking-app
-npm install
-npm run dev
