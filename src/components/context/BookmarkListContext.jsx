@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useReducer, useState } from "react";
 // import { PiOpenAiLogo } from "react-icons/pi";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -7,23 +7,67 @@ import axios from "axios";
 const BookmarkContext = createContext();
 const BASE_URL = "http://localhost:5000";
 
+
+const initialState = {
+  bookmarks: [],
+  isLoader: false,
+  currentBookmark: null,
+  error: null,
+}
+
+function bookmarkReducer (state, action){
+  switch(action.type){
+    case "loading": return {
+        ...state,
+         isLoader: true,
+    }
+    case"bookmarks/loaded": return {
+      ...state,
+      isLoader: false,
+      bookmarks: action.payload,
+    }
+    case"bookmark/loaded":{
+
+    }
+     case"bookmark/created":{
+
+    } 
+    case"bookmark/deleted":{
+
+    }
+    case"rejected": return{
+      ...state,
+       isLoader:false,
+       error: action.payload,
+    }
+    default:
+       throw new Error("unkhown action")
+  }
+}
+
+
+
+
 // BookmarkProvider COMPONENT FOR COVER OTHER COMPONENTS WITH TRANSMISSION VALUE IN CONTEXT...
 function BookmarkProvider({ children }) {
   // STATE FOR GET CURRENTHOTE IN ROUTE bookmark....
-  const [currentBookmark, setcurrentBookmark] = useState(null);
-
+  // const [currentBookmark, setcurrentBookmark] = useState(null);
   // STATE FOR CREATE ISlOADER UNIQUE FOR FETCHBOOKMARK....
-  const [bookmarks, setBookmarks] = useState([]);
-  const [isLoader, setIsLoader] = useState(false);
+  // const [bookmarks, setBookmarks] = useState([]);
+  // const [isLoader, setIsLoader] = useState(false);
 
+  // userReducer hooks.....
+   const [{bookmarks,isLoader, currentBookmark},dispath] = useReducer(bookmarkReducer, initialState);
+
+  
   // city and country add to db.json shod....for show update this data(get all bookmark)...
   useEffect(() => {
     async function fetchBookmarkList() {
-      setIsLoader(true);
+      dispath({type:"loading"});
 
       try {
         const { data } = await axios.get(`${BASE_URL}/bookmarks`);
-        setBookmarks(data);
+        dispath({type:"bookmarks/loaded" , payload:data})
       } catch (error) {
         toast.error(error.message);
       } finally {
@@ -35,14 +79,15 @@ function BookmarkProvider({ children }) {
 
   // for get one bookmark....
   async function getBookmark(id) {
-    setIsLoader(true);
-    setcurrentBookmark(null);
+    dispath({type: "loading"});
+    // setcurrentBookmark(null);
     try {
       const { data } = await axios.get(`${BASE_URL}/bookmarks/${id}`);
       setcurrentBookmark(data);
       // console.log(data);
     } catch (error) {
       toast.error(error.message);
+      dispath({type: "rejected", payload:"an error accured in loading bookmark"});
     } finally {
       setIsLoader(false);
     }
